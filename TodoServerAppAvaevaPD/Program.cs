@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using TodoServerAppAvaevaPD.Components;
 using TodoServerAppAvaevaPD.Components.Account;
 using TodoServerAppAvaevaPD.Data;
+using TodoServerAppAvaevaPD.Data.Interfaces;
+using TodoServerAppAvaevaPD.Data.Services;
 
 namespace TodoServerAppAvaevaPD
 {
@@ -40,6 +42,7 @@ namespace TodoServerAppAvaevaPD
                 .AddDefaultTokenProviders();
 
             builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+            builder.Services.AddScoped<IDataService, MSSQLDataService>();
 
             var app = builder.Build();
 
